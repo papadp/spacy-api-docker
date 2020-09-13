@@ -12,11 +12,6 @@ RUN apt-get update && apt-get install -y \
     nginx && \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
-# Install node for the frontend
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
-  apt-get install -y nodejs &&\
-  apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
-
 # Copy and set up the app
 COPY . /app
 
@@ -24,7 +19,6 @@ COPY . /app
 RUN bash /app/build_sassc.sh
 
 # Build app
-RUN cd /app/frontend && make clean && make
 RUN cd /app && make clean && make
 
 # Configure nginx & supervisor
