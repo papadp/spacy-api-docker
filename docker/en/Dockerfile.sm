@@ -1,4 +1,5 @@
 FROM spacy_base
 
 ENV languages "en_core_web_sm"
-RUN cd /app && env/bin/download_models
+RUN cd /app && python3 ./displacy_service/scripts/download.py
+RUN cd / && rm -rfd /app

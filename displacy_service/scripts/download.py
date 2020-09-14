@@ -22,3 +22,7 @@ def download_models():
     #           indent=2)
 
     print("Done!")
+
+
+if __name__ == "__main__":
+    download_models()
